@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>갤러리</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: #f5f5f3;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .w {
+      background: #fff;
+      max-width: 420px;
+      width: 100%;
+      color: #1a1a1a;
+      font-family: 'Noto Serif KR', serif;
+      min-height: 100vh;
+    }
+
+    .gallery-header {
+      padding: 20px 20px;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 100;
+    }
+
+    .gallery-back {
+      cursor: pointer;
+      font-size: 28px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .gallery-header button {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .fullview-header {
+      padding: 20px 20px;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+    }
+
+    .fullview-header button {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #333;
+      font-weight: bold;
+      font-family: 'Noto Serif KR', serif;
+    }
+
+    .gallery-section {
+      padding: 30px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .gallery-section:last-child {
+      border-bottom: none;
+    }
+
+    .gallery-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 20px;
+      padding: 0 20px;
+    }
+
+    .gallery-subtitle {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.9rem;
+      color: #5f5f5f;
+      letter-spacing: 0.05em;
+      padding: 0 10px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .gallery-wrapper {
+      position: relative;
+      padding: 0 20px;
+      overflow: hidden;
+    }
+
+    .gallery-cards {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 20px 0;
+    }
+
+    .gallery-cards::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery-card {
+      flex-shrink: 0;
+      width: 260px;
+      background: #fff;
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .gallery-card-image {
+      width: 100%;
+      height: 260px;
+      background: #f5f5f5;
+      object-fit: cover;
+    }
+
+    .gallery-card-info {
+      padding: 12px;
+      /* text-align: center; */
+    }
+
+    .gallery-card-number {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.9rem;
+      color: #bbb;
+      letter-spacing: 0.1em;
+    }
+
+    /* 전체보기 모드 */
+    .fullview {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #f5f5f3;
+      z-index: 1000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fullview.active {
+      display: flex;
+    }
+
+    .fullview-wrapper {
+      width: 100%;
+      max-width: 420px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+    }
+
+    .fullview-container {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .fullview-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .fullview-item {
+      flex-shrink: 0;
+      width: 100%;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .fullview-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      object-fit: contain;
+      cursor: pointer;
+    }
+
+    /* 전체 화면 모드 */
+    .fullscreen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fullscreen.active {
+      display: flex;
+    }
+
+    .fullscreen-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .fullscreen-close:hover {
+      opacity: 1;
+    }
+
+    .fullscreen img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .fullscreen-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 48px;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+      padding: 20px;
+    }
+
+    .fullscreen-nav:hover {
+      opacity: 1;
+    }
+
+    .fullscreen-nav-left {
+      left: 20px;
+    }
+
+    .fullscreen-nav-right {
+      right: 20px;
+    }
+
+    .fullscreen-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 12px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="w">
+    <div class="gallery-header">
+      <span class="gallery-back" onclick="history.back()">←</span>
+      <div></div>
+    </div>
+
+    <!-- Concept A -->
+    <div class="gallery-section">
+      <div style="display: flex; align-items: baseline; gap: 12px; padding: 0 20px;">
+        <div class="gallery-title" style="margin-bottom: 0; padding: 0;">Concept: A</div>
+        <div class="gallery-subtitle">Photo by 김지광</div>
+      </div>
+      <div class="gallery-wrapper">
+        <div class="gallery-cards" id="galleryA">
+          <!-- 동적으로 생성됨 -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Concept B -->
+    <div class="gallery-section">
+      <div style="display: flex; align-items: baseline; gap: 12px; padding: 0 20px;">
+        <div class="gallery-title" style="margin-bottom: 0; padding: 0;">Concept: B</div>
+        <div class="gallery-subtitle">Photo by 김지광</div>
+      </div>
+      <div class="gallery-wrapper">
+        <div class="gallery-cards" id="galleryB">
+          <!-- 동적으로 생성됨 -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Concept C -->
+    <div class="gallery-section">
+      <div style="display: flex; align-items: baseline; gap: 12px; padding: 0 20px;">
+        <div class="gallery-title" style="margin-bottom: 0; padding: 0;">Concept: C</div>
+        <div class="gallery-subtitle">Photo by 이다희</div>
+      </div>
+      <div class="gallery-wrapper">
+        <div class="gallery-cards" id="galleryC">
+          <!-- 동적으로 생성됨 -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Concept F -->
+    <div class="gallery-section">
+      <div style="display: flex; align-items: baseline; gap: 12px; padding: 0 20px;">
+        <div class="gallery-title" style="margin-bottom: 0; padding: 0;">Concept: F</div>
+        <div class="gallery-subtitle">Photo by 이다희</div>
+      </div>
+      <div class="gallery-wrapper">
+        <div class="gallery-cards" id="galleryF">
+          <!-- 동적으로 생성됨 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 전체보기 모드 -->
+  <div class="fullview" id="fullview">
+    <div class="fullview-wrapper">
+      <div class="fullview-header">
+        <button onclick="closeFullview()">←</button>
+      </div>
+      <div class="fullview-container" id="fullviewContainer">
+        <!-- 동적으로 생성됨 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 전체 화면 모드 -->
+  <div class="fullscreen" id="fullscreen">
+    <button class="fullscreen-close" onclick="closeFullscreen()">×</button>
+    <button class="fullscreen-nav fullscreen-nav-left" onclick="prevFullscreenImage()">‹</button>
+    <img id="fullscreenImage" src="" alt="Full Screen">
+    <button class="fullscreen-nav fullscreen-nav-right" onclick="nextFullscreenImage()">›</button>
+    <div class="fullscreen-counter"><span id="currentImageNum">01</span> / <span id="totalImageNum">06</span></div>
+  </div>
+
+  <script>
+    const imagesA = [
+      { id: 1, src: 'gallery/conceptA/photo1.jpg' },
+      { id: 2, src: 'gallery/conceptA/photo2.jpg' },
+      { id: 3, src: 'gallery/conceptA/photo3.jpg' },
+      { id: 4, src: 'gallery/conceptA/photo4.jpg' },
+      { id: 5, src: 'gallery/conceptA/photo5.jpg' },
+      { id: 6, src: 'gallery/conceptA/photo6.jpg' },
+      { id: 7, src: 'gallery/conceptA/photo7.jpg' },
+      { id: 8, src: 'gallery/conceptA/photo8.jpg' },
+      { id: 9, src: 'gallery/conceptA/photo9.jpg' },
+      { id: 10, src: 'gallery/conceptA/photo10.jpg' },
+      { id: 11, src: 'gallery/conceptA/photo11.jpg' },
+      { id: 12, src: 'gallery/conceptA/photo12.jpg' },
+      { id: 13, src: 'gallery/conceptA/photo13.jpg' },
+      { id: 14, src: 'gallery/conceptA/photo14.jpg' },
+      { id: 15, src: 'gallery/conceptA/photo15.jpg' },
+      { id: 16, src: 'gallery/conceptA/photo16.jpg' },
+      { id: 17, src: 'gallery/conceptA/photo17.jpg' },
+      { id: 18, src: 'gallery/conceptA/photo18.jpg' },
+      { id: 19, src: 'gallery/conceptA/photo19.jpg' },
+      { id: 20, src: 'gallery/conceptA/photo20.jpg' },
+      { id: 21, src: 'gallery/conceptA/photo21.jpg' },
+      { id: 22, src: 'gallery/conceptA/photo22.jpg' },
+      { id: 23, src: 'gallery/conceptA/photo23.jpg' },
+      { id: 24, src: 'gallery/conceptA/photo24.jpg' },
+      { id: 25, src: 'gallery/conceptA/photo25.jpg' },
+    ];
+
+    const imagesB = [
+      { id: 1, src: 'gallery/conceptB/photo1.jpg' },
+      { id: 2, src: 'gallery/conceptB/photo2.jpg' },
+      { id: 3, src: 'gallery/conceptB/photo3.jpg' },
+      { id: 4, src: 'gallery/conceptB/photo4.jpg' },
+      { id: 5, src: 'gallery/conceptB/photo5.jpg' },
+      { id: 6, src: 'gallery/conceptB/photo6.jpg' },
+      { id: 7, src: 'gallery/conceptB/photo7.jpg' },
+      { id: 8, src: 'gallery/conceptB/photo8.jpg' },
+      { id: 9, src: 'gallery/conceptB/photo9.jpg' },
+      { id: 10, src: 'gallery/conceptB/photo10.jpg' },
+      { id: 11, src: 'gallery/conceptB/photo11.jpg' },
+      { id: 12, src: 'gallery/conceptB/photo12.jpg' },
+      { id: 13, src: 'gallery/conceptB/photo13.jpg' },
+      { id: 14, src: 'gallery/conceptB/photo14.jpg' },
+      { id: 15, src: 'gallery/conceptB/photo15.jpg' },
+      { id: 16, src: 'gallery/conceptB/photo16.jpg' },
+      { id: 17, src: 'gallery/conceptB/photo17.jpg' },
+      { id: 18, src: 'gallery/conceptB/photo18.jpg' },
+      { id: 19, src: 'gallery/conceptB/photo19.jpg' },
+      { id: 20, src: 'gallery/conceptB/photo20.jpg' },
+      { id: 21, src: 'gallery/conceptB/photo21.jpg' },
+      { id: 22, src: 'gallery/conceptB/photo22.jpg' },
+      { id: 23, src: 'gallery/conceptB/photo23.jpg' },
+      { id: 24, src: 'gallery/conceptB/photo24.jpg' },
+      { id: 25, src: 'gallery/conceptB/photo25.jpg' },
+      { id: 26, src: 'gallery/conceptB/photo26.jpg' },
+      { id: 27, src: 'gallery/conceptB/photo27.jpg' },
+      { id: 27, src: 'gallery/conceptB/photo28.jpg' },
+    ];
+
+    const imagesC = [
+      { id: 1, src: 'gallery/conceptC/photo1.jpg' },
+      { id: 2, src: 'gallery/conceptC/photo2.jpg' },
+      { id: 3, src: 'gallery/conceptC/photo3.jpg' },
+      { id: 4, src: 'gallery/conceptC/photo4.jpg' },
+      { id: 5, src: 'gallery/conceptC/photo5.jpg' },
+      { id: 6, src: 'gallery/conceptC/photo6.jpg' },
+    ];
+
+    const imagesF = [
+      { id: 1, src: 'gallery/conceptF/photo1.jpg' },
+      { id: 2, src: 'gallery/conceptF/photo2.jpg' },
+      { id: 3, src: 'gallery/conceptF/photo3.jpg' },
+      { id: 4, src: 'gallery/conceptF/photo4.jpg' },
+      { id: 5, src: 'gallery/conceptF/photo5.jpg' },
+      { id: 6, src: 'gallery/conceptF/photo6.jpg' },
+      { id: 7, src: 'gallery/conceptF/photo7.jpg' },
+      { id: 8, src: 'gallery/conceptF/photo8.jpg' },
+      { id: 9, src: 'gallery/conceptF/photo9.jpg' },
+      { id: 10, src: 'gallery/conceptF/photo10.jpg' },
+      { id: 11, src: 'gallery/conceptF/photo11.jpg'},
+      { id: 12, src: 'gallery/conceptF/photo12.jpg'},
+      { id: 13, src: 'gallery/conceptF/photo13.jpg'},
+      { id: 14, src: 'gallery/conceptF/photo14.jpg'},
+      { id: 15, src: 'gallery/conceptF/photo15.jpg'},
+      { id: 16, src: 'gallery/conceptF/photo16.jpg'},
+      { id: 17, src: 'gallery/conceptF/photo17.jpg'},
+      { id: 18, src: 'gallery/conceptF/photo18.jpg'},
+      { id: 19, src: 'gallery/conceptF/photo19.jpg'},
+      { id: 20, src: 'gallery/conceptF/photo20.jpg'},
+      { id: 21, src: 'gallery/conceptF/photo21.jpg'},
+      { id: 22, src: 'gallery/conceptF/photo22.jpg'},
+      { id: 23, src: 'gallery/conceptF/photo23.jpg'},
+      { id: 24, src: 'gallery/conceptF/photo24.jpg'},
+      { id: 25, src: 'gallery/conceptF/photo25.jpg'},
+      { id: 26, src: 'gallery/conceptF/photo26.jpg'},
+      { id: 27, src: 'gallery/conceptF/photo27.jpg'},
+      { id: 28, src: 'gallery/conceptF/photo28.jpg'},
+      { id: 29, src: 'gallery/conceptF/photo29.jpg'},
+      { id: 30, src: 'gallery/conceptF/photo30.jpg'},
+      { id: 31, src: 'gallery/conceptF/photo31.jpg'},
+      { id: 32, src: 'gallery/conceptF/photo32.jpg'},
+    ];
+
+    let currentImages = [];
+    let currentImageIndex = 0;
+
+    function initGallery() {
+      const conceptMap = { 'A': imagesA, 'B': imagesB, 'C': imagesC, 'F': imagesF };
+      const concepts = ['A', 'B', 'C', 'F'];
+      
+      concepts.forEach(concept => {
+        const container = document.getElementById('gallery' + concept);
+        const conceptImages = conceptMap[concept];
+        container.innerHTML = conceptImages.map((img, idx) => `
+          <div class="gallery-card" data-concept="${concept}" data-index="${idx}" onclick="handleCardClick(this)">
+            <img src="${img.src}" alt="Gallery ${img.id}" class="gallery-card-image" 
+                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22260%22 height=%22260%22%3E%3Crect fill=%22%23f5f5f5%22 width=%22260%22 height=%22260%22/%3E%3C/svg%3E'">
+            <div class="gallery-card-info">
+              <div class="gallery-card-number">/0${img.id}</div>
+            </div>
+          </div>
+        `).join('');
+
+        // 터치 스와이프 기능
+        let startX = 0;
+        let scrollLeft = 0;
+        let touchStartX = 0;
+        let touchScrollLeft = 0;
+
+        container.addEventListener('mousedown', (e) => {
+          startX = e.pageX - container.offsetLeft;
+          scrollLeft = container.scrollLeft;
+          container.style.cursor = 'grabbing';
+        });
+
+        container.addEventListener('mouseleave', () => {
+          container.style.cursor = 'grab';
+        });
+
+        container.addEventListener('mouseup', () => {
+          container.style.cursor = 'grab';
+        });
+
+        container.addEventListener('mousemove', (e) => {
+          if (startX === 0) return;
+          e.preventDefault();
+          const x = e.pageX - container.offsetLeft;
+          const walk = (x - startX) * 1;
+          container.scrollLeft = scrollLeft - walk;
+        });
+
+        container.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+          touchScrollLeft = container.scrollLeft;
+        });
+
+        container.addEventListener('touchmove', (e) => {
+          const touchX = e.touches[0].clientX;
+          const walk = (touchStartX - touchX) * 2;
+          container.scrollLeft = touchScrollLeft + walk;
+        });
+      });
+    }
+
+    function handleCardClick(element) {
+      const concept = element.getAttribute('data-concept');
+      const index = parseInt(element.getAttribute('data-index'));
+      openFullview(index, concept);
+    }
+
+    function openFullview(index, concept) {
+      const fullview = document.getElementById('fullview');
+      const container = document.getElementById('fullviewContainer');
+      const conceptMap = { 'A': imagesA, 'B': imagesB, 'C': imagesC, 'F': imagesF };
+      currentImages = conceptMap[concept];
+
+      container.innerHTML = currentImages.map(img => `
+        <div class="fullview-item">
+          <img src="${img.src}" alt="Gallery ${img.id}" onclick="openFullscreen('${img.src}')"
+               onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22380%22 height=%22400%22%3E%3Crect fill=%22%23f5f5f5%22 width=%22380%22 height=%22400%22/%3E%3C/svg%3E'">
+        </div>
+      `).join('');
+
+      fullview.classList.add('active');
+    }
+
+    function closeFullview() {
+      document.getElementById('fullview').classList.remove('active');
+    }
+
+    function openFullscreen(src) {
+      const fullscreen = document.getElementById('fullscreen');
+      currentImageIndex = currentImages.findIndex(img => img.src === src);
+      updateFullscreenImage();
+      fullscreen.classList.add('active');
+    }
+
+    function updateFullscreenImage() {
+      const img = currentImages[currentImageIndex];
+      document.getElementById('fullscreenImage').src = img.src;
+      document.getElementById('currentImageNum').textContent = String(currentImageIndex + 1).padStart(2, '0');
+      document.getElementById('totalImageNum').textContent = String(currentImages.length).padStart(2, '0');
+    }
+
+    function prevFullscreenImage() {
+      currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+      updateFullscreenImage();
+    }
+
+    function nextFullscreenImage() {
+      currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+      updateFullscreenImage();
+    }
+
+    function closeFullscreen() {
+      document.getElementById('fullscreen').classList.remove('active');
+    }
+
+    initGallery();
+  </script>
+</body>
+</html>

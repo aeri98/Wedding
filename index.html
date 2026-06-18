@@ -1,0 +1,1157 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <title>김승준 ♥ 기애리 결혼합니다</title>
+
+    <!-- OG 태그 (카카오톡 공유 썸네일) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="김승준 ♥ 기애리 결혼합니다 💍" />
+    <meta
+      property="og:description"
+      content="2026년 7월 25일 토요일 오후 12시 30분 · 부천 MJ컨벤션"
+    />
+    <meta
+      property="og:image"
+      content="https://aeriki.github.io/wedding/cover.jpg"
+    />
+    <meta property="og:url" content="https://aeriki.github.io/wedding" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+KR:wght@300;400&family=Noto+Sans+KR:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="w">
+      <!-- 커버 사진: cover.jpg 파일을 같은 폴더에 넣어주세요 -->
+      <div class="cover">
+        <img
+          class="cover-bg"
+          src="images/main_cover3.jpg"
+          alt="커버 사진"
+          onerror="this.style.opacity = '0'"
+        />
+        <audio id="audio" src="bgm_01.mp3" loop></audio>
+        <button class="music-player-btn" id="musicBtn">
+          <div class="music-bars hidden" id="musicBars">
+            <div class="music-bar"></div>
+            <div class="music-bar delay1"></div>
+            <div class="music-bar delay2"></div>
+          </div>
+          <div class="play-triangle" id="playIcon"></div>
+          <div class="pause-icon hidden" id="pauseIcon">
+            <div class="pause-bar"></div>
+            <div class="pause-bar"></div>
+          </div>
+        </button>
+        <!-- <div class="cover-txt">
+        <div class="c-eng">Wedding Invitation</div>
+        <div class="c-names">김승준 <span class="c-amp">&</span> 기애리</div>
+        <div class="c-date">2026 · 07 · 25</div>
+      </div> -->
+      </div>
+
+      <div class="sec">
+        <div class="sec-t">
+          <img class="section_graphic" src="images/decoration_ribbon.png" />
+        </div>
+        <p class="msg">
+          <span class="msg-line">서로에게 햇살 같은 존재가 되어</span><br />
+          <span class="msg-line"
+            >언제나 곁에서 서로를 따뜻하게 비추는 사람이 되려 합니다.</span
+          >
+          <span class="mg"></span>
+          <span class="msg-line">기쁨은 함께 나누고</span><br />
+          <span class="msg-line">어려움은 함께 이겨내며</span><br />
+          <span class="msg-line"
+            >앞으로의 모든 날을 나란히 걸어가고자 합니다.</span
+          >
+          <span class="mg"></span>
+          <span class="msg-line">소중한 날, 귀한 걸음으로 오시어</span><br />
+          <span class="msg-line"
+            >따뜻한 축복으로 함께해 주시면 감사하겠습니다.</span
+          >
+        </p>
+
+        <div class="family">
+          <div class="family-line">
+            <span style="margin-right: 17px"></span>
+            <span>김진황 · 오영주</span>
+            <span class="family-txt"
+              >의
+              <span class="family-s">아들</span>
+            </span>
+            <span class="family-name">김승준</span>
+          </div>
+          <div class="family-line">
+            <img src="images/flower.png" />
+            <span>기영관 · 김경애</span>
+            <span class="family-txt"
+              >의
+              <span class="family-s">딸</span>
+            </span>
+            <span class="family-name">기애리</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero">
+        <div class="hr2"></div>
+        <div class="date-m">WEDDING DAY</div>
+        <div class="date-s">2026년 7월 25일 토요일 오후 12시 30분</div>
+        <div class="cal-wrap">
+          <div class="cal-month">July</div>
+          <div class="cal-grid" id="cal"></div>
+        </div>
+        <div
+          class="cd"
+          id="cd"
+          style="
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgb(238, 238, 238);
+          "
+        ></div>
+      </div>
+
+      <!-- 갤러리: gallery/ 폴더에 photo1.jpg ~ photo6.jpg 넣어주세요 -->
+      <div class="sec">
+        <div class="sec-t">GALLERY</div>
+        <div class="gallery-main">
+          <img id="mainGalleryImage" alt="Main Gallery" src="images/1.jpg" />
+        </div>
+        <div class="hide-scrollbar">
+          <img
+            class="gallery-thumbnail active"
+            src="images/1.jpg"
+            onclick="changeMainImage(this)"
+          />
+          <img
+            class="gallery-thumbnail"
+            src="images/2.jpg"
+            onclick="changeMainImage(this)"
+          />
+          <img
+            class="gallery-thumbnail"
+            src="images/3.jpg"
+            onclick="changeMainImage(this)"
+          />
+          <img
+            class="gallery-thumbnail"
+            src="images/4.jpg"
+            onclick="changeMainImage(this)"
+          />
+          <img
+            class="gallery-thumbnail"
+            src="images/5.jpg"
+            onclick="changeMainImage(this)"
+          />
+          <img
+            class="gallery-thumbnail"
+            src="images/6.jpg"
+            onclick="changeMainImage(this)"
+          />
+          <img
+            class="gallery-thumbnail"
+            src="images/7.jpg"
+            onclick="changeMainImage(this)"
+          />
+          <img
+            class="gallery-thumbnail"
+            src="images/8.jpg"
+            onclick="changeMainImage(this)"
+          />
+        </div>
+        <div style="text-align: center; margin-top: 20px">
+          <a
+            href="gallery.html"
+            style="
+              display: inline-block;
+              padding: 10px 30px;
+              background: #7f7858;
+              color: #fff;
+              font-family: &quot;Noto Sans KR&quot;, sans-serif;
+              font-size: 12px;
+              letter-spacing: 0.08em;
+              text-decoration: none;
+              transition: opacity 0.2s;
+            "
+            >사진 전체보기</a
+          >
+        </div>
+      </div>
+
+      <div class="sec bg_1">
+        <div class="sec-t">LOCATION</div>
+        <div>
+          <div class="weddibg_title">피로연</div>
+          <div class="map_sec">
+            <div class="add_title">하니크라운 대연회장</div>
+            <div class="map_date">2026년 7월 18일 토요일 11시-16시</div>
+            <!-- * 카카오맵 - 지도퍼가기 -->
+            <!-- 1. 지도 노드 -->
+            <div
+              id="daumRoughmapContainer1781512913244"
+              class="root_daum_roughmap root_daum_roughmap_landing"
+            ></div>
+            <div style="text-align: center; margin-bottom: 20px">
+              <button
+                class="map_add"
+                onclick="
+                  copyText(
+                    '제주특별자치도 제주시 삼성로 10',
+                    '주소가 복사되었습니다',
+                  )
+                "
+                style="
+                  background: none;
+                  border: none;
+                  cursor: pointer;
+                  padding: 0;
+                "
+              >
+                <span>
+                  제주특별자치도 제주시 삼성로 10
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.4445 7.89062H9.44906C8.59052 7.89062 7.89453 8.58661 7.89453 9.44516V16.4406C7.89453 17.2991 8.59052 17.9951 9.44906 17.9951H16.4445C17.303 17.9951 17.999 17.2991 17.999 16.4406V9.44516C17.999 8.58661 17.303 7.89062 16.4445 7.89062Z"
+                      stroke="#4b4b4b"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M4.3318 12.1045H3.55453C3.14225 12.1045 2.74684 11.9407 2.45531 11.6492C2.16378 11.3576 2 10.9622 2 10.5499V3.55453C2 3.14225 2.16378 2.74684 2.45531 2.45531C2.74684 2.16378 3.14225 2 3.55453 2H10.5499C10.9622 2 11.3576 2.16378 11.6492 2.45531C11.9407 2.74684 12.1045 3.14225 12.1045 3.55453V4.3318"
+                      stroke="#4b4b4b"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <!--
+	2. 설치 스크립트
+	* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+-->
+          <script
+            charset="UTF-8"
+            class="daum_roughmap_loader_script"
+            src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"
+          ></script>
+
+          <!-- 3. 실행 스크립트 -->
+          <script charset="UTF-8">
+            new daum.roughmap.Lander({
+              timestamp: "1781512913244",
+              key: "pkzfoyte8ha",
+              mapWidth: "303",
+              mapHeight: "303",
+            }).render();
+          </script>
+
+          <div class="info_line"></div>
+          <div class="map_info">
+            <!-- 자차 -->
+            <div>
+              <div class="info_title">
+                <span class="mr-2">
+                  <svg
+                    class="map_icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <mask
+                      id="mask0_309_5402"
+                      maskUnits="userSpaceOnUse"
+                      x="0"
+                      y="0"
+                      width="18"
+                      height="18"
+                      style="mask-type: alpha"
+                    >
+                      <rect width="18" height="18" fill="#D9D9D9"></rect>
+                    </mask>
+                    <g mask="url(#mask0_309_5402)">
+                      <path
+                        d="M4 11C4.55228 11 5 10.5523 5 10C5 9.44772 4.55228 9 4 9C3.44772 9 3 9.44772 3 10C3 10.5523 3.44772 11 4 11Z"
+                        fill="#555"
+                      ></path>
+                      <path
+                        d="M14 11C14.5523 11 15 10.5523 15 10C15 9.44772 14.5523 9 14 9C13.4477 9 13 9.44772 13 10C13 10.5523 13.4477 11 14 11Z"
+                        fill="#555"
+                      ></path>
+                      <path
+                        d="M16 7.5H2"
+                        stroke="#555"
+                        stroke-miterlimit="10"
+                      ></path>
+                      <path d="M18 7H15L16 9H18V7Z" fill="#555"></path>
+                      <path d="M3 7H0V9H2L3 7Z" fill="#555"></path>
+                      <path
+                        d="M1.5 15V10L3 7.5L3.72147 3.1712C3.8822 2.20683 4.71658 1.5 5.69425 1.5H12.3057C13.2834 1.5 14.1178 2.20683 14.2785 3.1712L15 7.5L16.5 10V15H1.5Z"
+                        stroke="#555"
+                      ></path>
+                      <path
+                        d="M13 15H16V17.5C16 17.7761 15.7761 18 15.5 18H13.5C13.2239 18 13 17.7761 13 17.5V15Z"
+                        fill="#555"
+                      ></path>
+                      <path
+                        d="M2 15H5V17.5C5 17.7761 4.77614 18 4.5 18H2.5C2.22386 18 2 17.7761 2 17.5V15Z"
+                        fill="#555"
+                      ></path>
+                      <line
+                        x1="3"
+                        y1="12.5"
+                        x2="15"
+                        y2="12.5"
+                        stroke="#555"
+                      ></line>
+                    </g>
+                  </svg>
+                </span>
+                <span class="font-semibold" style="color: #555">자차</span>
+              </div>
+              <div class="info_text">
+                <span>
+                  <p class="gsap-text">
+                    내비게이션 : '<strong
+                      ><span style="color: rgb(0, 0, 0)"
+                        >하니크라운 대연회장</span
+                      ></strong
+                    >' 검색
+                  </p>
+                  <br />
+                  <p class="gsap-text">제주특별자치도 제주시 삼성로 10</p>
+                  <p class="gsap-text">당일 연회장의 주차 혼잡이 예상되오니,</p>
+                  <p class="gsap-text">
+                    시간적 여유를 두고 도착해 주시기 바랍니다.
+                  </p>
+                </span>
+              </div>
+              <div class="info_line"></div>
+            </div>
+            <!-- 주차 -->
+            <div>
+              <div class="info_title">
+                <span class="mr-2">
+                  <svg
+                    class="map_icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6.5 13.5V9M6.5 9V4.5H10.25C11.4926 4.5 12.5 5.50736 12.5 6.75V6.75C12.5 7.99264 11.4926 9 10.25 9H6.5Z"
+                      stroke="#555"
+                      stroke-linecap="square"
+                    ></path>
+                    <rect
+                      x="0.5"
+                      y="0.5"
+                      width="17"
+                      height="17"
+                      rx="3.5"
+                      stroke="#555"
+                    ></rect>
+                  </svg>
+                </span>
+                <span class="font-semibold" style="color: #555">주차</span>
+              </div>
+              <div class="info_text">
+                <span>
+                  <p class="gsap-text">하니크라운 호텔주차장</p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="weddibg_title">결혼식</div>
+        <div class="map_sec">
+          <div slass="add_title">MJ컨벤션 파티오볼룸홀(5층)</div>
+          <div class="map_date">2026년 7월 25일 토요일 오후 12시 30분</div>
+          <!-- * 카카오맵 - 지도퍼가기 -->
+          <!-- 1. 지도 노드 -->
+          <div
+            id="daumRoughmapContainer1781513255552"
+            class="root_daum_roughmap root_daum_roughmap_landing"
+          ></div>
+          <div style="text-align: center; margin-bottom: 20px">
+            <button
+              class="map_add"
+              onclick="
+                copyText(
+                  '경기 부천시 소사구 경인로 386',
+                  '주소가 복사되었습니다',
+                )
+              "
+              style="
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+              "
+            >
+              <span>
+                경기 부천시 소사구 경인로 386
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16.4445 7.89062H9.44906C8.59052 7.89062 7.89453 8.58661 7.89453 9.44516V16.4406C7.89453 17.2991 8.59052 17.9951 9.44906 17.9951H16.4445C17.303 17.9951 17.999 17.2991 17.999 16.4406V9.44516C17.999 8.58661 17.303 7.89062 16.4445 7.89062Z"
+                    stroke="#4b4b4b"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                  <path
+                    d="M4.3318 12.1045H3.55453C3.14225 12.1045 2.74684 11.9407 2.45531 11.6492C2.16378 11.3576 2 10.9622 2 10.5499V3.55453C2 3.14225 2.16378 2.74684 2.45531 2.45531C2.74684 2.16378 3.14225 2 3.55453 2H10.5499C10.9622 2 11.3576 2.16378 11.6492 2.45531C11.9407 2.74684 12.1045 3.14225 12.1045 3.55453V4.3318"
+                    stroke="#4b4b4b"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. 실행 스크립트 -->
+        <script charset="UTF-8">
+          new daum.roughmap.Lander({
+            timestamp: "1781513255552",
+            key: "pkzoq2qjepn",
+            mapWidth: "303",
+            mapHeight: "303",
+          }).render();
+        </script>
+
+        <div class="info_line"></div>
+        <div class="map_info">
+          <!-- 자차 -->
+          <div>
+            <div class="info_title">
+              <span class="mr-2">
+                <svg
+                  class="map_icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <mask
+                    id="mask0_309_5402"
+                    maskUnits="userSpaceOnUse"
+                    x="0"
+                    y="0"
+                    width="18"
+                    height="18"
+                    style="mask-type: alpha"
+                  >
+                    <rect width="18" height="18" fill="#D9D9D9"></rect>
+                  </mask>
+                  <g mask="url(#mask0_309_5402)">
+                    <path
+                      d="M4 11C4.55228 11 5 10.5523 5 10C5 9.44772 4.55228 9 4 9C3.44772 9 3 9.44772 3 10C3 10.5523 3.44772 11 4 11Z"
+                      fill="#555"
+                    ></path>
+                    <path
+                      d="M14 11C14.5523 11 15 10.5523 15 10C15 9.44772 14.5523 9 14 9C13.4477 9 13 9.44772 13 10C13 10.5523 13.4477 11 14 11Z"
+                      fill="#555"
+                    ></path>
+                    <path
+                      d="M16 7.5H2"
+                      stroke="#555"
+                      stroke-miterlimit="10"
+                    ></path>
+                    <path d="M18 7H15L16 9H18V7Z" fill="#555"></path>
+                    <path d="M3 7H0V9H2L3 7Z" fill="#555"></path>
+                    <path
+                      d="M1.5 15V10L3 7.5L3.72147 3.1712C3.8822 2.20683 4.71658 1.5 5.69425 1.5H12.3057C13.2834 1.5 14.1178 2.20683 14.2785 3.1712L15 7.5L16.5 10V15H1.5Z"
+                      stroke="#555"
+                    ></path>
+                    <path
+                      d="M13 15H16V17.5C16 17.7761 15.7761 18 15.5 18H13.5C13.2239 18 13 17.7761 13 17.5V15Z"
+                      fill="#555"
+                    ></path>
+                    <path
+                      d="M2 15H5V17.5C5 17.7761 4.77614 18 4.5 18H2.5C2.22386 18 2 17.7761 2 17.5V15Z"
+                      fill="#555"
+                    ></path>
+                    <line
+                      x1="3"
+                      y1="12.5"
+                      x2="15"
+                      y2="12.5"
+                      stroke="#555"
+                    ></line>
+                  </g>
+                </svg>
+              </span>
+              <span class="font-semibold" style="color: #555">자차</span>
+            </div>
+            <div class="info_text">
+              <span>
+                <p class="gsap-text">
+                  내비게이션 : '<strong
+                    ><span style="color: rgb(0, 0, 0)">MJ컨벤션</span></strong
+                  >' 검색
+                </p>
+                <br />
+                <p class="gsap-text">
+                  경기도 부천시 소사구 경인로 386 (소사본동 65-7)
+                </p>
+                <p class="gsap-text">당일 예식장의 주차 혼잡이 예상되오니,</p>
+                <p class="gsap-text">
+                  시간적 여유를 두고 도착해 주시기 바랍니다.
+                </p>
+              </span>
+            </div>
+            <div class="info_line"></div>
+          </div>
+          <!-- 버스 -->
+          <div>
+            <div class="info_title">
+              <span class="mr-2">
+                <svg
+                  class="map_icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <mask
+                    id="mask0_309_5400"
+                    maskUnits="userSpaceOnUse"
+                    x="0"
+                    y="0"
+                    width="18"
+                    height="18"
+                    style="mask-type: alpha"
+                  >
+                    <rect width="18" height="18" fill="#D9D9D9"></rect>
+                  </mask>
+                  <g mask="url(#mask0_309_5400)">
+                    <path
+                      d="M13 16H16V17.5C16 17.7761 15.7761 18 15.5 18H13.5C13.2239 18 13 17.7761 13 17.5V16Z"
+                      fill="#555"
+                    ></path>
+                    <path
+                      d="M2 16H5V17.5C5 17.7761 4.77614 18 4.5 18H2.5C2.22386 18 2 17.7761 2 17.5V16Z"
+                      fill="#555"
+                    ></path>
+                    <path
+                      d="M2.5 2C2.5 1.17157 3.17157 0.5 4 0.5H14C14.8284 0.5 15.5 1.17157 15.5 2V15.5H2.5V2Z"
+                      stroke="#555"
+                    ></path>
+                    <line
+                      x1="3"
+                      y1="11.5"
+                      x2="15"
+                      y2="11.5"
+                      stroke="#555"
+                    ></line>
+                    <line x1="3" y1="3.5" x2="15" y2="3.5" stroke="#555"></line>
+                    <line
+                      x1="4"
+                      y1="13.5"
+                      x2="6"
+                      y2="13.5"
+                      stroke="#555"
+                    ></line>
+                    <line
+                      x1="12"
+                      y1="13.5"
+                      x2="14"
+                      y2="13.5"
+                      stroke="#555"
+                    ></line>
+                    <path
+                      d="M2.72361 5.94721C2.9706 5.82372 3.07071 5.52338 2.94721 5.27639C2.82372 5.0294 2.52338 4.92929 2.27639 5.05279L2.72361 5.94721ZM0.5 6.5L0.276393 6.05279L0 6.19098V6.5H0.5ZM0 8.5V9H1V8.5H0ZM2.27639 5.05279L0.276393 6.05279L0.723607 6.94721L2.72361 5.94721L2.27639 5.05279ZM0 6.5V8.5H1V6.5H0Z"
+                      fill="#555"
+                    ></path>
+                    <path
+                      d="M15.2764 5.94721C15.0294 5.82372 14.9293 5.52338 15.0528 5.27639C15.1763 5.0294 15.4766 4.92929 15.7236 5.05279L15.2764 5.94721ZM17.5 6.5L17.7236 6.05279L18 6.19098V6.5H17.5ZM18 8.5V9H17V8.5H18ZM15.7236 5.05279L17.7236 6.05279L17.2764 6.94721L15.2764 5.94721L15.7236 5.05279ZM18 6.5V8.5H17V6.5H18Z"
+                      fill="#555"
+                    ></path>
+                  </g>
+                </svg>
+              </span>
+              <span class="font-semibold" style="color: #555">버스</span>
+            </div>
+            <div class="info_text">
+              <span>
+                <p class="gsap-text">
+                  <strong>소사구청삼거리 · MJ 컨벤션 : </strong>19, 83, 88, 53
+                </p>
+                <br />
+                <p class="gsap-text">
+                  <strong>소사구청삼거리 :</strong> 53, 60-1, 99
+                </p>
+                <br />
+                <p class="gsap-text">
+                  <strong>소사구청 · 소사푸르지오 :</strong> 20, 56, 56-1, 60,
+                  60-1
+                </p>
+              </span>
+            </div>
+
+            <div class="info_line"></div>
+
+            <!-- 지하철 -->
+            <div>
+              <div class="info_title">
+                <span class="mr-2">
+                  <svg
+                    class="map_icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <mask
+                      id="mask0_309_5387"
+                      maskUnits="userSpaceOnUse"
+                      x="0"
+                      y="0"
+                      width="18"
+                      height="18"
+                      style="mask-type: alpha"
+                    >
+                      <rect width="18" height="18" fill="#D9D9D9"></rect>
+                    </mask>
+                    <g mask="url(#mask0_309_5387)">
+                      <path
+                        d="M6 14C6.55228 14 7 13.5523 7 13C7 12.4477 6.55228 12 6 12C5.44772 12 5 12.4477 5 13C5 13.5523 5.44772 14 6 14Z"
+                        fill="#555"
+                      ></path>
+                      <path
+                        d="M12 14C12.5523 14 13 13.5523 13 13C13 12.4477 12.5523 12 12 12C11.4477 12 11 12.4477 11 13C11 13.5523 11.4477 14 12 14Z"
+                        fill="#555"
+                      ></path>
+                      <path
+                        d="M3.5 8C3.5 6.067 5.067 4.5 7 4.5H11C12.933 4.5 14.5 6.067 14.5 8V14C14.5 14.8284 13.8284 15.5 13 15.5H5C4.17157 15.5 3.5 14.8284 3.5 14V8Z"
+                        stroke="#555"
+                      ></path>
+                      <line
+                        x1="3"
+                        y1="10.5"
+                        x2="14"
+                        y2="10.5"
+                        stroke="#555"
+                      ></line>
+                      <line
+                        x1="7"
+                        y1="2.5"
+                        x2="11"
+                        y2="2.5"
+                        stroke="#555"
+                      ></line>
+                      <path
+                        d="M0.5 17.5V8.5C0.5 4.08172 4.08172 0.5 8.5 0.5H9.5C13.9183 0.5 17.5 4.08172 17.5 8.5V17.5"
+                        stroke="#555"
+                        stroke-linecap="square"
+                      ></path>
+                      <line
+                        y1="-0.5"
+                        x2="5.83095"
+                        y2="-0.5"
+                        transform="matrix(-0.514496 0.857493 -0.729537 -0.683941 6 15)"
+                        stroke="#555"
+                      ></line>
+                      <line
+                        y1="-0.5"
+                        x2="5.83095"
+                        y2="-0.5"
+                        transform="matrix(0.514496 0.857493 0.729537 -0.683941 12 15)"
+                        stroke="#555"
+                      ></line>
+                    </g>
+                  </svg>
+                </span>
+                <span class="font-semibold" style="color: #555">지하철</span>
+              </div>
+              <div class="info_text">
+                <span>
+                  <p class="gsap-text">
+                    <strong
+                      ><span style="color: rgb(60, 120, 216)">1호선 </span
+                      ><span style="color: rgb(0, 0, 0)">/</span
+                      ><span style="color: rgb(60, 120, 216)"> </span
+                      ><span style="color: rgb(106, 168, 79)">서해선 </span
+                      ><span style="color: rgb(0, 0, 0)">(소사역)</span></strong
+                    >
+                  </p>
+                  <p class="gsap-text">소사역 1번 출구 건너편 (좌측 100M)</p>
+                </span>
+              </div>
+              <div
+                data-orientation="horizontal"
+                role="none"
+                class="shrink-0 bg-border h-[1px] w-full gsap-opacity my-2"
+                style="background-color: #555"
+              ></div>
+            </div>
+
+            <div class="info_line"></div>
+
+            <!-- 주차 -->
+            <div>
+              <div class="info_title">
+                <span class="mr-2">
+                  <svg
+                    class="map_icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6.5 13.5V9M6.5 9V4.5H10.25C11.4926 4.5 12.5 5.50736 12.5 6.75V6.75C12.5 7.99264 11.4926 9 10.25 9H6.5Z"
+                      stroke="#555"
+                      stroke-linecap="square"
+                    ></path>
+                    <rect
+                      x="0.5"
+                      y="0.5"
+                      width="17"
+                      height="17"
+                      rx="3.5"
+                      stroke="#555"
+                    ></rect>
+                  </svg>
+                </span>
+                <span class="font-semibold" style="color: #555">주차</span>
+              </div>
+              <div class="info_text">
+                <span>
+                  <p class="gsap-text">MJ컨벤션 본관/신관 주차타워 :</p>
+                  <p class="gsap-text">
+                    <strong
+                      ><span style="color: rgb(0, 0, 0)"
+                        >하객 2시간 무료</span
+                      ></strong
+                    >
+                    (이후 10분당 1,000원)
+                  </p>
+                  <p class="gsap-text">주차 요원 안내를 받아주세요.</p>
+                  <br />
+                  <p class="gsap-text">
+                    본관 주차타워의 경우 예식장과 브릿지로 연결되어 있습니다.
+                  </p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec_2 bg_1">
+        <div class="sec-t">마음 전하기</div>
+        <div class="heart-container">
+          <button class="heart-btn" onclick="toggleAccordion('groom')">
+            <span>신랑측 계좌번호</span>
+            <span class="heart-toggle" id="groom-toggle">▼ 펼치기</span>
+          </button>
+          <div id="groom-content" class="heart-content">
+            <div class="heart-box">
+              <div class="heart-row">
+                <div class="heart-info">
+                  <div class="heart-info-title">
+                    국민은행 <b>1234-56-7890</b>
+                  </div>
+                  <div class="heart-info-name">예금주: 김진황</div>
+                </div>
+                <button
+                  class="heart-copy-btn"
+                  onclick="
+                    copyText('1234-56-7890', '계좌번호가 복사되었습니다')
+                  "
+                >
+                  복사
+                </button>
+              </div>
+              <div class="heart-row">
+                <div class="heart-info">
+                  <div class="heart-info-title">
+                    신한은행 <b>1234-56-7890</b>
+                  </div>
+                  <div class="heart-info-name">예금주: 오영주</div>
+                </div>
+                <button
+                  class="heart-copy-btn"
+                  onclick="
+                    copyText('1234-56-7890', '계좌번호가 복사되었습니다')
+                  "
+                >
+                  복사
+                </button>
+              </div>
+              <div class="heart-row">
+                <div class="heart-info">
+                  <div class="heart-info-title">
+                    농협은행 <b>351-1023-4732-53</b>
+                  </div>
+                  <div class="heart-info-name">예금주: 김승준</div>
+                </div>
+                <button
+                  class="heart-copy-btn"
+                  onclick="
+                    copyText('351-1023-4732-53', '계좌번호가 복사되었습니다')
+                  "
+                >
+                  복사
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="heart-container">
+          <button class="heart-btn" onclick="toggleAccordion('bride')">
+            <span>신부측 계좌번호</span>
+            <span class="heart-toggle" id="bride-toggle">▼ 펼치기</span>
+          </button>
+          <div id="bride-content" class="heart-content">
+            <div class="heart-box">
+              <div class="heart-row">
+                <div class="heart-info">
+                  <div class="heart-info-title">
+                    우리은행 <b>1234-56-7890</b>
+                  </div>
+                  <div class="heart-info-name">예금주: 김경애</div>
+                </div>
+                <button
+                  class="heart-copy-btn"
+                  onclick="
+                    copyText('1234-56-7890', '계좌번호가 복사되었습니다')
+                  "
+                >
+                  복사
+                </button>
+              </div>
+              <div class="heart-row">
+                <div class="heart-info">
+                  <div class="heart-info-title">
+                    하나은행 <b>1234-56-7890</b>
+                  </div>
+                  <div class="heart-info-name">예금주: 기애리</div>
+                </div>
+                <button
+                  class="heart-copy-btn"
+                  onclick="
+                    copyText('1234-56-7890', '계좌번호가 복사되었습니다')
+                  "
+                >
+                  복사
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="sec">
+      <div class="sec-t">방명록</div>
+      <div class="gb-form">
+        <input class="gb-input" id="gb-name" placeholder="이름" maxlength="20">
+        <textarea class="gb-input gb-textarea" id="gb-msg" placeholder="따뜻한 축하 메시지를 남겨주세요 🤍"
+          maxlength="200"></textarea>
+        <button class="gb-submit" onclick="submitGb()">남기기</button>
+      </div>
+      <div class="gb-list" id="gb-list"></div>
+    </div> -->
+
+      <div class="sec" style="border-bottom: none">
+        <div class="sec-t">공유하기</div>
+        <div class="share-btns">
+          <button
+            class="share-btn share-link"
+            onclick="copyText(location.href, '링크가 복사되었습니다')"
+          >
+            🔗 링크 복사
+          </button>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="footer-t">Kim Seungjun · Ki Aeri · 2026</div>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lb" id="lb" onclick="closeLb(event)">
+      <span class="lb-x" onclick="closeLb()">×</span>
+      <img id="lb-img" src="" alt="" />
+      <div class="lb-nav">
+        <button class="lb-btn" onclick="lbNav(-1)">← prev</button>
+        <button class="lb-btn" onclick="lbNav(1)">next →</button>
+      </div>
+      <div class="lb-cnt" id="lb-cnt"></div>
+    </div>
+    <div class="toast" id="toast"></div>
+
+    <script>
+      //music
+      const musicBtn = document.getElementById("musicBtn");
+      const audio = document.getElementById("audio");
+      const playIcon = document.getElementById("playIcon");
+      const musicBars = document.getElementById("musicBars");
+      const pauseIcon = document.getElementById("pauseIcon");
+      let isPlaying = false;
+
+      musicBtn.addEventListener("click", () => {
+        if (isPlaying) {
+          audio.pause();
+          isPlaying = false;
+        } else {
+          audio.play();
+          isPlaying = true;
+        }
+        updateDisplay();
+      });
+
+      function updateDisplay() {
+        if (isPlaying) {
+          playIcon.classList.add("hidden");
+          musicBars.classList.remove("hidden");
+          pauseIcon.classList.remove("hidden");
+        } else {
+          playIcon.classList.remove("hidden");
+          musicBars.classList.add("hidden");
+          pauseIcon.classList.add("hidden");
+        }
+      }
+
+      audio.addEventListener("ended", () => {
+        isPlaying = false;
+        updateDisplay();
+      });
+
+      // Calendar
+      (function () {
+        const days = ["일", "월", "화", "수", "목", "금", "토"];
+        const grid = document.getElementById("cal");
+        let h = days
+          .map(
+            (d, i) =>
+              `<div class="cal-day-name${i === 0 ? " sun" : i === 6 ? " sat" : ""}">${d}</div>`,
+          )
+          .join("");
+        const start = 3,
+          total = 31; // July 2026: starts Wednesday
+        for (let i = 0; i < start; i++)
+          h += `<div class="cal-cell empty">0</div>`;
+        for (let d = 1; d <= total; d++) {
+          const dow = (start + d - 1) % 7;
+          const cls = dow === 0 ? " sun" : dow === 6 ? " sat" : "";
+          if (d === 25)
+            h += `<div class="cal-cell${cls}"><div class="wedding-circle">25</div></div>`;
+          else h += `<div class="cal-cell${cls}">${d}</div>`;
+        }
+        grid.innerHTML = h;
+      })();
+
+      // Countdown
+      function tick() {
+        const now = new Date();
+        const weddingDate = new Date("2026-07-25T12:30:00");
+        const diff = weddingDate - now;
+        const el = document.getElementById("cd");
+
+        // 결혼식 당일 (2026-07-25 00:00:00 ~ 2026-07-25 23:59:59)
+        if (now.toDateString() === weddingDate.toDateString()) {
+          el.innerHTML =
+            '<p style="font-family:Noto Serif KR,serif;font-size:14px;color:#555;font-weight:300;letter-spacing:.05em">결혼식이 오늘입니다 ♡</p>';
+          return;
+        } else if (diff <= 0) {
+          // 결혼식 지난 후
+          el.innerHTML =
+            '<p style="font-family:Noto Serif KR,serif;font-size:14px;color:#555;font-weight:300;letter-spacing:.05em">행복한 결혼 생활 중입니다 ♡</p>';
+          return;
+        }
+
+        // 결혼식 전
+        const days = Math.floor(diff / 86400000);
+        el.innerHTML = `<p style="font-family:Noto Serif KR,serif;font-size:14px;color:#555;font-weight:300;letter-spacing:.05em">결혼식이 <span style="font-size:16px;font-weight:700;color:#e08080">${days}</span>일 남았습니다.</p>`;
+      }
+      tick();
+      setInterval(tick, 1000);
+
+      // Gallery lightbox
+      const galImgs = Array.from(document.querySelectorAll(".gal-item img"));
+      let lbIdx = 0;
+      function openLb(i) {
+        if (!galImgs[i] || !galImgs[i].src) return;
+        lbIdx = i;
+        document.getElementById("lb-img").src = galImgs[i].src;
+        document.getElementById("lb-cnt").textContent =
+          `${i + 1} / ${galImgs.length}`;
+        document.getElementById("lb").classList.add("open");
+      }
+      function closeLb(e) {
+        if (
+          !e ||
+          e.target === document.getElementById("lb") ||
+          e.target.classList.contains("lb-x")
+        )
+          document.getElementById("lb").classList.remove("open");
+      }
+      function lbNav(dir) {
+        lbIdx = (lbIdx + dir + galImgs.length) % galImgs.length;
+        document.getElementById("lb-img").src = galImgs[lbIdx].src;
+        document.getElementById("lb-cnt").textContent =
+          `${lbIdx + 1} / ${galImgs.length}`;
+      }
+      document.addEventListener("keydown", (e) => {
+        if (!document.getElementById("lb").classList.contains("open")) return;
+        if (e.key === "ArrowLeft") lbNav(-1);
+        if (e.key === "ArrowRight") lbNav(1);
+        if (e.key === "Escape") closeLb();
+      });
+
+      // Gallery
+      function changeMainImage(thumbnail) {
+        const mainImage = document.getElementById("mainGalleryImage");
+        mainImage.src = thumbnail.src;
+
+        // 모든 썸네일 opacity 0.6으로 설정
+        document.querySelectorAll(".hide-scrollbar img").forEach((img) => {
+          img.style.opacity = "0.6";
+        });
+
+        // 클릭한 썸네일 opacity 1로 설정
+        thumbnail.style.opacity = "1";
+      }
+
+      // Accordion Toggle
+      function toggleAccordion(id) {
+        const content = document.getElementById(id + "-content");
+        const toggle = document.getElementById(id + "-toggle");
+
+        if (content.classList.contains("open")) {
+          content.classList.remove("open");
+          toggle.textContent = "▼ 펼치기";
+        } else {
+          content.classList.add("open");
+          toggle.textContent = "▲ 접기";
+        }
+      }
+
+      // Account tabs
+      function switchAcc(side, btn) {
+        document
+          .querySelectorAll(".acc-tab")
+          .forEach((t) => t.classList.remove("active"));
+        document
+          .querySelectorAll(".acc-panel")
+          .forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("acc-" + side).classList.add("active");
+      }
+
+      // Copy
+      function copyText(text, msg) {
+        navigator.clipboard.writeText(text).catch(() => {});
+        showToast(msg);
+      }
+      function showToast(msg) {
+        const t = document.getElementById("toast");
+        t.innerHTML =
+          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#333" height="20" width="20" style="flex-shrink:0"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"></path></svg>' +
+          msg;
+        t.classList.add("show");
+        setTimeout(() => t.classList.remove("show"), 2000);
+      }
+
+      // Guestbook (메모리 저장 - 새로고침시 초기화됨)
+      let gbs = [];
+      function submitGb() {
+        const name = document.getElementById("gb-name").value.trim();
+        const msg = document.getElementById("gb-msg").value.trim();
+        if (!name || !msg) return;
+        const now = new Date();
+        gbs.unshift({
+          name,
+          msg,
+          date: `${now.getMonth() + 1}.${now.getDate()}`,
+        });
+        document.getElementById("gb-name").value = "";
+        document.getElementById("gb-msg").value = "";
+        renderGb();
+        showToast("방명록이 등록되었습니다 🤍");
+      }
+      function renderGb() {
+        document.getElementById("gb-list").innerHTML = gbs
+          .map(
+            (g) =>
+              `<div class="gb-item"><div class="gb-item-name">${g.name}</div><div class="gb-item-msg">${g.msg}</div><div class="gb-item-date">${g.date}</div></div>`,
+          )
+          .join("");
+      }
+
+      // 스크롤 애니메이션 - msg-line, family-line
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // msg 안의 각 줄
+            if (entry.target.classList.contains("msg")) {
+              entry.target.querySelectorAll(".msg-line").forEach((line) => {
+                line.classList.add("fade-in");
+              });
+            }
+            // family-line 각각
+            else if (entry.target.classList.contains("family-line")) {
+              entry.target.classList.add("fade-in");
+            }
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // msg와 family-line 요소 감시
+      document.querySelectorAll(".msg").forEach((el) => {
+        observer.observe(el);
+      });
+
+      document.querySelectorAll(".family-line").forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>
