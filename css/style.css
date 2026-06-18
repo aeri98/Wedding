@@ -43,11 +43,11 @@
 }
 
 .family-line.fade-in {
-  animation: fadeInUp 1.7s ease-out forwards;
+  animation: fadeInUp 1.6s ease-out forwards;
 }
 
-.family-line:nth-child(1).fade-in { animation-delay: 1.7s;  margin-bottom: 12px;}
-.family-line:nth-child(2).fade-in { animation-delay: 1.8s; }
+.family-line:nth-child(1).fade-in { animation-delay: 1.6s;  margin-bottom: 12px;}
+.family-line:nth-child(2).fade-in { animation-delay: 1.7s; }
 
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#f5f5f3;display:flex;justify-content:center;min-height:100vh}
