@@ -589,6 +589,14 @@ if (wasPlaying) {
       audio.play();
     }, { once: true });
   });
+}if (wasPlaying) {
+  audio.currentTime = savedTime;
+  
+  audio.play().catch(() => {
+    window.addEventListener('scroll', function() {
+      audio.play();
+    }, { once: true });
+  });
 }
   </script>
 
