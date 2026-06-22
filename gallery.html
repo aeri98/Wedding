@@ -274,6 +274,7 @@
   </style>
 </head>
 <body>
+    <audio id="audio" src="bgm_01.mp3" loop></audio>
   <div class="w">
     <div class="gallery-header">
       <span class="gallery-back" onclick="history.back()">←</span>
@@ -573,6 +574,23 @@
     }
 
     initGallery();
+
+    // 음악 이어서 재생
+const audio = document.getElementById('audio');
+const wasPlaying = sessionStorage.getItem('musicPlaying') === 'true';
+const savedTime = parseFloat(sessionStorage.getItem('musicTime') || '0');
+
+if (wasPlaying) {
+  audio.currentTime = savedTime;
+  audio.play();
+}
+
+// 페이지 떠날 때 재생 위치 저장
+window.addEventListener('beforeunload', () => {
+  sessionStorage.setItem('musicTime', audio.currentTime);
+  sessionStorage.setItem('musicPlaying', String(!audio.paused));
+});
   </script>
+
 </body>
 </html>

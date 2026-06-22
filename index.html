@@ -775,6 +775,29 @@
   }
 }, { once: true });
 
+// 페이지 떠나기 전 재생 위치 저장
+window.addEventListener('beforeunload', () => {
+  if (isPlaying) {
+    sessionStorage.setItem('musicTime', audio.currentTime);
+    sessionStorage.setItem('musicPlaying', 'true');
+  } else {
+    sessionStorage.setItem('musicPlaying', 'false');
+  }
+});
+
+// 페이지 로드 시 이어서 재생
+window.addEventListener('load', () => {
+  const wasPlaying = sessionStorage.getItem('musicPlaying') === 'true';
+  const savedTime = parseFloat(sessionStorage.getItem('musicTime') || '0');
+  
+  if (wasPlaying) {
+    audio.currentTime = savedTime;
+    audio.play();
+    isPlaying = true;
+    updateDisplay();
+  }
+});
+
       // Calendar
       (function () {
         const days = ["일", "월", "화", "수", "목", "금", "토"];
