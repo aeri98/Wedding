@@ -582,14 +582,14 @@ const savedTime = parseFloat(sessionStorage.getItem('musicTime') || '0');
 
 if (wasPlaying) {
   audio.currentTime = savedTime;
-  audio.play();
+  
+  // 바로 재생 시도, 안되면 첫 터치 시 재생
+  audio.play().catch(() => {
+    document.addEventListener('touchstart', function() {
+      audio.play();
+    }, { once: true });
+  });
 }
-
-// 페이지 떠날 때 재생 위치 저장
-window.addEventListener('beforeunload', () => {
-  sessionStorage.setItem('musicTime', audio.currentTime);
-  sessionStorage.setItem('musicPlaying', String(!audio.paused));
-});
   </script>
 
 </body>
