@@ -766,6 +766,15 @@
         updateDisplay();
       });
 
+      //음악자동재생
+      document.addEventListener('click', function() {
+  if (!isPlaying) {
+    audio.play();
+    isPlaying = true;
+    updateDisplay();
+  }
+}, { once: true });
+
       // Calendar
       (function () {
         const days = ["일", "월", "화", "수", "목", "금", "토"];
