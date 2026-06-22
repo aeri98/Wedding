@@ -738,6 +738,14 @@
       const pauseIcon = document.getElementById("pauseIcon");
       let isPlaying = false;
 
+      window.addEventListener('scroll', function() {
+  if (!isPlaying) {
+    audio.play();
+    isPlaying = true;
+    updateDisplay();
+  }
+}, { once: true });
+
       musicBtn.addEventListener("click", () => {
         if (isPlaying) {
           audio.pause();
